@@ -1,5 +1,6 @@
 ---
 version: 4.2.4
-archive_path: /tmp/node-v{{ version }}.tar.gz
+release_name: node-v{{ version }}-{{ ansible_system | lower }}-{{ ansible_architecture }}
+archive_path: /tmp/{{ release_name }}.tar.gz
 install_path: /usr/local
-url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-{{ ansible_system | lower }}-{{ ansible_architecture }}.tar.gz
+url: https://nodejs.org/dist/v{{ version }}/{{ release_name }}.tar.gz

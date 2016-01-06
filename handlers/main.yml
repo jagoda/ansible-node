@@ -1,0 +1,3 @@
+---
+- name: remove extracted files
+  file: path=/tmp/{{ release_name }} state=absent

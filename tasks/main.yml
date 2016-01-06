@@ -8,11 +8,14 @@
   get_url: url={{ url }} dest={{ archive_path }}
 
 - name: unpack archive
-  unarchive: src={{ archive_path }} dest={{ install_path }} copy=no
+  unarchive: src={{ archive_path }} dest=/tmp copy=no
+  notify:
+    - remove extracted files
 
-- name: remove extraneous files
-  file: path={{ install_path }}/{{ item }} state=absent
+- name: install binaries
+  shell: cp -R /tmp/{{ release_name }}/{{ item }}/* {{ install_path }}/{{ item }}/
   with_items:
-    - README.md
-    - LICENSE
-    - CHANGELOG.md
+    - bin
+    - include
+    - lib
+    - share
