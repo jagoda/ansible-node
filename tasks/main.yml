@@ -8,7 +8,7 @@
   get_url: url={{ url }} dest={{ archive_path }}
 
 - name: unpack archive
-  unarchive: src={{ archive_path }} dest={{ install_path }}
+  unarchive: src={{ archive_path }} dest={{ install_path }} copy=no
 
 - name: remove extraneous files
   file: path={{ install_path }}/{{ item }} state=absent
